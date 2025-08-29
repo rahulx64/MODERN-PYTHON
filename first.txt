@@ -1,0 +1,1235 @@
+
+# python p1
+c=10
+d=10
+print(id(c))
+print(id(d))
+d+=2
+print(id(c))
+print(id(d))
+# deleting a variable 
+del c
+print(id(10))
+print(type(d))
+print(type(str(10)))
+# constants in python 
+# python garbage collector mechanism  releases memory occupied by unreffered object
+
+# part 2 data type  are classes and variable are objects 
+
+tuple = ( 'abcd', 786 , 2.23, 'john', 70.2  )
+tinytuple = (123, 'john')
+
+print (tuple)               # Prints the complete tuple
+print (tuple[0])            # Prints first element of the tuple
+print (tuple[1:3])          # Prints elements of the tuple starting from 2nd till 3rd 
+print (tuple[2:])           # Prints elements of the tuple starting from 3rd element
+print (tinytuple * 2)       # Prints the contents of the tuple twice
+print (tuple + tinytuple)
+
+
+for i in range(1,10,2):
+     print(i)
+b = b'hello'
+print(type(b))
+print(b[0])         # 104 (ASCII of 'h')
+# Using bytes() function to create bytes
+b1 = bytes([65, 66, 67, 68, 69])  
+print(b1)
+
+v=memoryview(b1)
+print(v)
+
+# part 1.3 type casting 
+x=5
+y=4.5
+z=x+y
+print(z)
+print(type(z))
+s = "abc"
+print(list(s))         # ['a', 'b', 'c']
+print(tuple(s))        # ('a', 'b', 'c')
+print(set(s))          # {'a', 'b', 'c'} (unordered)
+
+# python literals are fized value wrriten in source code which do not changed here a is literal which do not changes 
+a=10
+b=a*4
+print(b)
+# operators memebership opwerator and identity operator 
+x=[1,2,3,4]
+print(1 in x)
+print(2 not in x)
+x = [1, 2]
+y = [1, 2]
+
+print(x == y)   # True  → same **values**
+print(x is y)   # False → different **objects**
+
+------------>functions  and modules 
+"hello world"
+import math
+# a, b = input("Enter two numbers: ").split()
+# print("A:", a, "B:", b)
+# pass staement do nothing it just pass 
+
+# ✅ Variable-Length Arguments (*args and **kwargs)
+def show_all(*args):
+    for item in args:
+        print(item)
+
+show_all("Apple", "Banana", "Mango")
+def show_details(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key} = {value}")
+
+show_details(name="Rahul", age=22)
+
+# ✅ Lambda Functions (Anonymous Functions)
+
+square = lambda x: x ** 2
+print(square(5))
+# ✅ Nested Functions (Function inside another function)
+
+def outer():
+    def inner():
+        print("Inside inner function")
+    inner()
+
+outer()
+
+
+# ✅ Docstring
+
+def welcome(name):
+    """This function greets a person by name"""
+    print(f"Welcome, {name}!")
+
+print(welcome.__doc__)
+
+
+
+print(dir(math))
+
+# ✅ Using __name__ == '__main__'
+
+def run():
+    print("Run only when this file is executed directly")
+
+if __name__ == "__main__":
+    run()
+
+
+-----------------------------strings 
+s1 = 'Hello'
+s2 = "World"
+s3 = '''Triple quotes for multiline
+or docstrings'''
+print(s1[1:3])
+print(s1.lower())
+print(s3.replace('for','python'))
+print(type(s3.split()))
+
+----------------------list 
+fruits = ["apple", "banana", "cherry"]
+numbers = [1, 2, 3, 4.5]
+mixed = [1, "hello", True, None]
+
+numbers.append(3)
+numbers.insert(1,278)
+numbers.remove(2)
+print(numbers)
+numbers.reverse()
+numbers.sort()
+print(numbers)
+print(len(numbers))
+print(min(numbers))
+for i in numbers :
+     print(i)
+
+x=(1,2,3)
+print(x[0])
+print(x.count(1))
+
+print(x.count(3))
+
+--------------------------------oops---------------->
+# python oops ---------------------------------------
+class Employee:
+   'Common base class for all employees'
+   empCount = 0
+
+   def __init__(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print("Total Employee %d" % Employee.empCount)
+
+   def displayEmployee(self):
+      print("Name : ", self.name,  ", Salary: ", self.salary)
+
+# This would create first object of Employee class
+emp1 = Employee("Zara", 2000)
+# This would create second object of Employee class
+emp2 = Employee("Manni", 5000)
+
+
+emp1.displayEmployee()
+emp2.displayEmployee()
+print ("Total Employee %d" % Employee.empCount)
+
+
+# python oops ---------------------------------------
+class Employee:
+   'Common base class for all employees'
+   empCount = 0
+
+   def __init__(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print("Total Employee %d" % Employee.empCount)
+
+   def displayEmployee(self):
+      print("Name : ", self.name,  ", Salary: ", self.salary)
+
+# This would create first object of Employee class
+emp1 = Employee("Zara", 2000)
+# This would create second object of Employee class
+emp2 = Employee("Manni", 5000)
+# adding removing attributes 
+
+emp1.displayEmployee()
+emp2.displayEmployee()
+print ("Total Employee %d" % Employee.empCount)
+
+# we can define and create delete set attributes using following inbuilt method   
+# Returns true if 'age' attribute exists
+# hasattr(emp1, 'age')   
+# Returns value of 'age' attribute
+# getattr(emp1, 'age')    
+# Set attribute 'age' at 8
+# setattr(emp1, 'age', 8) 
+# Delete attribute 'age'
+# delattr(empl, 'age')
+
+
+# every class has builtin attributes 
+
+class Employee:
+   'Common base class for all employees'
+   empCount = 0
+
+   def __init__(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print ("Total Employee %d" % Employee.empCount)
+
+   def displayEmployee(self):
+      print ("Name : ", self.name,  ", Salary: ", self.salary)
+
+print ("Employee.__doc__:", Employee.__doc__)
+print ("Employee.__name__:", Employee.__name__)
+print ("Employee.__module__:", Employee.__module__)
+print ("Employee.__bases__:", Employee.__bases__)
+print ("Employee.__dict__:", Employee.__dict__)
+
+# __del__ destructor print the class name of an instace that is about to be destroyed   
+
+
+class Point:
+   def __init__( self, x=0, y=0):
+      self.x = x
+      self.y = y
+   def __del__(self):
+      class_name = self.__class__.__name__
+      print (class_name, "destroyed")
+
+pt1 = Point()
+pt2 = pt1
+pt3 = pt1
+# prints the ids of the obejcts
+print (id(pt1), id(pt2), id(pt3))
+del pt1
+del pt2
+del pt3
+
+
+# data hiding in python  we can achieve it by __var1 this attribute cannot be accesible 
+class JustCounter:
+   __secretCount = 0
+  
+   def count(self):
+      self.__secretCount += 1
+      print (self.__secretCount)
+
+counter = JustCounter()
+counter.count()
+counter.count()
+# print counter.__secretCount
+
+
+# there are two type of attribute instace attribute and class attribute 
+
+#####################################################################################
+instance method → When you need access to object state.
+
+class method → When you need access to or change the class state.
+
+static method → When you just need a utility function.
+
+#--class methods can change class attributes and static attribute do not need need any thing it work independly 
+
+
+-----------------------class methods--------------------------------------
+
+# there are three methods class,instace,static methods 
+# class methods 
+
+# while both are called on the class, static methods do not have access to the "cls" parameter and therefore it cannot modify the class state.
+
+# Unlike class method, the instance method can access the instance variables of the an object. It can also access the class variable as it is common to all the objects.
+
+# creating class methods 
+# Using classmethod() Function
+# Using @classmethod Decorator
+class Employee:
+   empCount = 0
+   def __init__(self, name, age):
+      self.__name = name
+      self.__age = age
+      Employee.empCount += 1
+   def showcount(self):
+      print (self.empCount)
+      
+   counter = classmethod(showcount)
+
+e1 = Employee("Bhavana", 24)
+e2 = Employee("Rajesh", 26)
+e3 = Employee("John", 27)
+
+e1.showcount()
+Employee.counter()
+
+
+class Employee:
+    empCount = 0
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Employee.empCount += 1
+
+    @classmethod
+    def showcount(cls):
+        print (cls.empCount)
+
+    @classmethod
+    def newemployee(cls, name, age):
+        return cls(name, age)
+
+e1 = Employee("Bhavana", 24)
+e2 = Employee("Rajesh", 26)
+e3 = Employee("John", 27)
+e4 = Employee.newemployee("Anil", 21)
+
+Employee.showcount()
+
+# Class attributes are those variables that belong to a class and whose value is shared among all the instances of that class. can be accese with cls in class methods 
+
+# Dynamically Add Class Method to a Class
+
+class Cloth:
+   pass
+
+# class method
+@classmethod
+def brandName(cls):
+   print("Name of the brand is Raymond")
+
+# adding dynamically
+setattr(Cloth, "brand_name", brandName)
+newObj = Cloth()
+newObj.brand_name()
+# Dynamically Delete Class Methods
+class Cloth:
+   # class method
+   @classmethod
+   def brandName(cls):
+      print("Name of the brand is Raymond")
+
+# deleting dynamically
+del Cloth.brandName
+print("Method deleted")
+
+--------------static methods----------------------------------
+In Python, a static method is a type of method that does not require any instance to be called. It is very similar to the class method but the difference is that the static method doesn't have a mandatory argument like reference to the object − self or reference to the class − cls.
+
+# Using staticmethod() Function
+# Using @staticmethod Decorator
+# since a static method cannot access class attributes, it can be used as a utility function to perform frequently re-used tasks.
+# We can invoke this method using the class name. Hence, it eliminates the dependency on the instances.
+# A static method is always predictable as its behavior remain unchanged regardless of the class state.
+# We can declare a method as a static method to prevent overriding.
+class Student:
+   stdCount = 0
+   def __init__(self, name, age):
+      self.__name = name
+      self.__age = age
+      Student.stdCount += 1
+   
+   # creating staticmethod
+   @staticmethod
+   def showcount():
+      print (Student.stdCount)
+
+e1 = Student("Bhavana", 24)
+e2 = Student("Rajesh", 26)
+e3 = Student("John", 27)
+
+print("Number of Students:")
+Student.showcount()
+
+class MathUtils:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+print(MathUtils.add(5, 7))   # 12
+
+--------------------------------constrctors-and access modifires-------
+# constructors -----------------------------------------------
+
+class Student:
+   def __init__(self, *args):
+      if len(args) == 1:
+         self.name = args[0]
+        
+      elif len(args) == 2:
+         self.name = args[0]
+         self.age = args[1]
+        
+      elif len(args) == 3:
+         self.name = args[0]
+         self.age = args[1]
+         self.gender = args[2]
+            
+st1 = Student("Shrey")
+print("Name:", st1.name)
+st2 = Student("Ram", 25)
+print(f"Name: {st2.name} and Age: {st2.age}")
+st3 = Student("Shyam", 26, "M")
+print(f"Name: {st3.name}, Age: {st3.age} and Gender: {st3.gender}")
+
+# access modifiers  
+# Public members − A class member is said to be public if it can be accessed from anywhere in the program.
+
+# Protected members − They are accessible from within the class as well as by classes derived from that class.
+
+# Private members − They can be accessed from within the class only.
+
+# To indicate that an instance variable is private, prefix it with double underscore (such as "__age").
+# To imply that a certain instance variable is protected, prefix it with single underscore (such as "_salary").
+
+class Employee:
+   def __init__(self, name, age, salary):
+      self.name = name # public variable
+      self.__age = age # private variable
+      self._salary = salary # protected variable
+   def displayEmployee(self):
+      print ("Name : ", self.name, ", age: ", self.__age, ", salary: ", self._salary)
+
+e1=Employee("Bhavana", 24, 10000)
+
+print (e1.name)
+print (e1._salary)
+e1.displayEmployee()
+# print (e1.__age)
+
+class Employee:
+   def __init__(self, name, age):
+      self.__name = name
+      self.__age = age
+
+   def get_name(self):
+      return self.__name
+   def get_age(self):
+      return self.__age
+   def set_name(self, name):
+      self.__name = name
+      return
+   def set_age(self, age):
+      self.__age=age
+
+e1=Employee("Bhavana", 24)
+print ("Name:", e1.get_name(), "age:", e1.get_age())
+e1.set_name("Archana")
+e1.set_age(21)
+print ("Name:", e1.get_name(), "age:", e1.get_age())
+
+------------------------inheritence-------------------------------
+# single inhertitance 
+# parent class
+class Parent: 
+   def parentMethod(self):
+      print ("Calling parent method")
+
+# child class
+class Child(Parent): 
+   def childMethod(self):
+      print ("Calling child method")
+
+# instance of child
+c = Child()  
+# calling method of child class
+c.childMethod() 
+# calling method of parent class
+c.parentMethod() 
+
+# multiple inheritance 
+class division:
+   def __init__(self, a,b):
+      self.n=a
+      self.d=b
+   def divide(self):
+      return self.n/self.d
+class modulus:
+   def __init__(self, a,b):
+      self.n=a
+      self.d=b
+   def mod_divide(self):
+      return self.n%self.d
+      
+class div_mod(division,modulus):
+   def __init__(self, a,b):
+      self.n=a
+      self.d=b
+   def div_and_mod(self):
+      divval=division.divide(self)
+      modval=modulus.mod_divide(self)
+      return (divval, modval)
+   
+x=div_mod(10,3)
+print ("division:",x.divide())
+print ("mod_division:",x.mod_divide())
+print ("divmod:",x.div_and_mod())
+
+# multilevel inheritance 
+# parent class
+class Universe: 
+   def universeMethod(self):
+      print ("I am in the Universe")
+
+# child class
+class Earth(Universe): 
+   def earthMethod(self):
+      print ("I am on Earth")
+      
+# another child class
+class India(Earth): 
+   def indianMethod(self):
+      print ("I am in India")      
+
+# creating instance 
+person = India()  
+# method calls
+person.universeMethod() 
+person.earthMethod() 
+person.indianMethod() 
+# hierarchical inheritance 
+# parent class
+class Manager: 
+   def managerMethod(self):
+      print ("I am the Manager")
+
+# child class
+class Employee1(Manager): 
+   def employee1Method(self):
+      print ("I am Employee one")
+      
+# second child class
+class Employee2(Manager): 
+   def employee2Method(self):
+      print ("I am Employee two")      
+
+# creating instances 
+emp1 = Employee1()  
+emp2 = Employee2()
+# method calls
+emp1.managerMethod() 
+emp1.employee1Method()
+emp2.managerMethod() 
+emp2.employee2Method()  
+
+# hybrid inhertance 
+# parent class
+class CEO: 
+   def ceoMethod(self):
+      print ("I am the CEO")
+      
+class Manager(CEO): 
+   def managerMethod(self):
+      print ("I am the Manager")
+
+class Employee1(Manager): 
+   def employee1Method(self):
+      print ("I am Employee one")
+      
+class Employee2(Manager, CEO): 
+   def employee2Method(self):
+      print ("I am Employee two")      
+
+# creating instances 
+emp = Employee2()
+# method calls
+emp.managerMethod() 
+emp.ceoMethod()
+emp.employee2Method()
+
+# super() function child class get its parents methods attributes also rather than overriding it 
+
+----------------------polymorphism---------------------------
+# polymorphism 
+# duck typing in python 
+class Duck:
+   def sound(self):
+      return "Quack, quack!"
+
+class AnotherBird:
+   def sound(self):
+      return "I'm similar to a duck!"
+
+def makeSound(duck):
+   print(duck.sound())
+
+# creating instances
+duck = Duck()
+anotherBird = AnotherBird()
+# calling methods
+makeSound(duck)   
+makeSound(anotherBird) 
+
+# method overriding 
+from abc import ABC, abstractmethod
+class shape(ABC):
+   @abstractmethod
+   def draw(self):
+      "Abstract method"
+      return
+
+class circle(shape):
+   def draw(self):
+      super().draw()
+      print ("Draw a circle")
+      return
+
+class rectangle(shape):
+   def draw(self):
+      super().draw()
+      print ("Draw a rectangle")
+      return
+
+shapes = [circle(), rectangle()]
+for shp in shapes:
+   shp.draw()
+
+# operator overloading 
+class Vector:
+   def __init__(self, a, b):
+      self.a = a
+      self.b = b
+
+   def __str__(self):
+      return 'Vector (%d, %d)' % (self.a, self.b)
+   
+   def __add__(self,other):
+      return Vector(self.a + other.a, self.b + other.b)
+
+v1 = Vector(2,10)
+v2 = Vector(5,-2)
+print (v1 + v2)
+
+class Employee:
+   def __init__(self,nm, sal):
+      self.name=nm
+      self.salary=sal
+   def getName(self):
+      return self.name
+   def getSalary(self):
+      return self.salary
+
+class SalesOfficer(Employee):
+   def __init__(self,nm, sal, inc):
+      super().__init__(nm,sal)
+      self.incnt=inc
+   def getSalary(self):
+      return self.salary+self.incnt
+
+e1=Employee("Rajesh", 9000)
+print ("Total salary for {} is Rs {}".format(e1.getName(),e1.getSalary()))
+s1=SalesOfficer('Kiran', 10000, 1000)
+print ("Total salary for {} is Rs {}".format(s1.getName(),s1.getSalary()))
+
+# method overloading 
+# When a class contains two or more methods with the same name but different number of parameters then this scenario can be termed as method overloading.
+
+def add(*nums):
+   return sum(nums)
+
+# Call the function with different number of parameters
+result1 = add(10, 25)
+result2 = add(10, 25, 35)
+
+print(result1)  
+print(result2) 
+
+
+class example:
+   def add(self, a = None, b = None, c = None):
+      x=0
+      if a !=None and b != None and c != None:
+         x = a+b+c
+      elif a !=None and b != None and c == None:
+         x = a+b
+      return x
+
+obj = example()
+
+print (obj.add(10,20,30))
+print (obj.add(10,20))
+
+# method overloading with dispatch function   
+from multipledispatch import dispatch
+class example:
+   @dispatch(int, int)
+   def add(self, a, b):
+      x = a+b
+      return x
+   @dispatch(int, int, int)
+   def add(self, a, b, c):
+      x = a+b+c
+      return x
+
+obj = example()
+
+print (obj.add(10,20,30))
+print (obj.add(10,20))
+
+#dyanmic binding and dynamic typing -------------------------------------------
+
+# here shp variable  follow dyanamic binding during runtime rather that same object name also known nas duck typing  shp dynamically or you can say duck typing most important task is shp must contain draw methods 
+
+class shape:
+   def draw(self):
+      print ("draw method")
+      return
+
+class circle(shape):
+   def draw(self):
+      print ("Draw a circle")
+      return
+
+class rectangle(shape):
+   def draw(self):
+      print ("Draw a rectangle")
+      return
+
+shapes = [circle(), rectangle()]
+for shp in shapes:
+   shp.draw()
+
+
+#-----------------abstraction and encapsulations -------------------
+
+# abstraction 
+from abc import ABC, abstractmethod
+class democlass(ABC):
+   @abstractmethod
+   def method1(self):
+      print ("abstract method")
+      return
+   def method2(self):
+      print ("concrete method")
+
+class concreteclass(democlass):
+   def method1(self):
+      super().method1()
+      return
+      
+obj = concreteclass()
+obj.method1()
+obj.method2()
+
+# encapsulation 
+class Student:
+
+   def __init__(self, name="Rajaram", marks=50):
+      self.__name = name
+      self.__marks = marks
+   def studentdata(self):
+      print ("Name: {} marks: {}".format(self.__name, self.__marks))
+      
+s1 = Student()
+s2 = Student("Bharat", 25)
+
+s1.studentdata()
+s2.studentdata()
+print ("Name: {} marks: {}".format(s1.__name, s2.__marks))
+print ("Name: {} marks: {}".format(s2.__name, __s2.marks))
+
+
+# interface 
+# while abstract class may contain some method which is abstract but in interface all methods are abstract 
+# packages are create using setup package for pip cli command 
+# A Singleton is a design pattern that allows only one instance of a class throughout the program.
+
+# 🔹 Why use it?
+# To manage a single shared resource like a database connection, logging, configuration, etc.
+
+# 🔹 Implementations:
+# ✅ 2. Wrapper Classes in Python
+# Python doesn't explicitly have wrapper classes like Java. But everything is an object in Python, and primitive data types like int, float, etc., are also implemented as classes.
+
+try:
+    num = int(input("Enter a number: "))
+    print(10 / num)
+except ZeroDivisionError:
+    print("You can't divide by zero.")
+except ValueError:
+    print("Invalid input. Enter a number.")
+
+
+
+-------------------------------------------------python key points 
+##  Python uses pass by reference mechanism. As variable in Python is a label or reference to the object in the memory, both the variables used as actual argument as well as formal arguments really refer to the same object in the memory. We can verify this fact by checking the id() of the passed variable before and after passing.
+The behavior also depends on whether the passed object is mutable or immutable. Python numeric object is immutable. When a numeric object is passed, and then the function changes the value of the formal argument, it actually creates a new object in the memory, leaving the original variable unchanged.
+
+-->function
+Positional or Required Arguments
+Required arguments are the arguments passed to a function in correct positional order. Here, the number of arguments in the function call should match exactly with the function definition, otherwise the code gives a syntax error.
+
+Keyword Arguments
+Keyword arguments are related to the function calls. When you use keyword arguments in a function call, the caller identifies the arguments by the parameter name. This allows you to skip arguments or place them out of order because the Python interpreter is able to use the keywords provided to match the values with parameters.
+
+Default Arguments
+A default argument is an argument that assumes a default value if a value is not provided in the function call for that argument.
+
+Positional-only arguments
+Those arguments that can only be specified by their position in the function call is called as Positional-only arguments. They are defined by placing a "/" in the function's parameter list after all positional-only parameters. This feature was introduced with the release of Python 3.8.
+
+Keyword-only arguments
+Those arguments that must be specified by their name while calling the function is known as Keyword-only arguments. They are defined by placing an asterisk ("*") in the function's parameter list before any keyword-only parameters. This type of argument can only be passed to a function as a keyword argument, not a positional argument.
+
+Arbitrary or Variable-length Arguments
+You may need to process a function for more arguments than you specified while defining the function. These arguments are called variable-length arguments and are not named in the function definition, unlike required and default arguments.
+
+Function Annotations
+The function annotation feature of Python enables you to add additional explanatory metadata about the arguments declared in a function definition, and also the return data type. They are not considered by Python interpreter while executing the function. They are mainly for the Python IDEs for providing a detailed documentation to the programmer.
+
+Although you can use the docstring feature of Python for documentation of a function, it may be obsolete if certain changes in the function's prototype are made. Hence, the annotation feature was introduced in Python as a result of PEP 3107.
+
+Annotations are any valid Python expressions added to the arguments or return data type. Simplest example of annotation is to prescribe the data type of the arguments. Annotation is mentioned as an expression after putting a colon in front of the argument.
+
+----------------------------------advance python ------
+Nice 🚀 Since you’ve completed OOP in Python, now to understand any Python code (from small scripts to large projects), you need to move into advanced Python concepts. These are the tools that experienced developers use everywhere.
+
+Here’s a roadmap of advanced Python concepts you should know (with purpose):
+
+🔑 1. Functions & Advanced Syntax
+
+Decorators → Functions that modify other functions. Used in Flask/Django, logging, authentication.
+
+Generators & Iterators → Memory-efficient looping with yield.
+
+Context Managers (with statement) → Manage resources (files, DB connections).
+
+Lambda, map, filter, reduce → Functional programming tools.
+
+List/Dict/Set Comprehensions → Short, Pythonic looping.
+
+Variable Arguments (*args, **kwargs) → Flexible function signatures. 
+
+🔑 2. Modules & Packages
+
+Organizing large codebases into modules.
+
+__init__.py, imports (from ... import).
+
+Virtual environments (venv, pip).
+
+🔑 3. Exception Handling (Advanced)
+
+Custom exceptions (class MyError(Exception): pass).
+
+try/except/else/finally.
+
+Raising and chaining exceptions (raise ... from ...).
+
+🔑 4. OOP (Beyond Basics)
+
+Dunder methods (__str__, __repr__, __eq__, __len__, __iter__ …).
+
+Abstract classes & Interfaces (abc module).
+
+Multiple inheritance & Method Resolution Order (MRO).
+
+Mixins (classes made for adding functionality).
+
+🔑 5. Functional & Meta Programming
+
+Closures → Functions that capture variables from outer scope.
+
+Decorators (advanced) → Parameterized decorators.
+
+Metaclasses → Classes that create classes (rare, but powerful).
+
+🔑 6. Advanced Data Handling
+
+Itertools (chain, combinations, permutations).
+
+Collections (Counter, defaultdict, namedtuple, deque).
+
+dataclasses → Clean, boilerplate-free classes.
+
+typing → Type hints (List[int], Dict[str, Any], Union).
+
+🔑 7. Concurrency & Parallelism
+
+Multithreading (threading) → For I/O-bound tasks.
+
+Multiprocessing (multiprocessing) → For CPU-bound tasks.
+
+AsyncIO (async, await) → For async programming (used in FastAPI, Scrapy).
+
+🔑 8. File & Data Handling
+
+JSON, CSV, Pickle.
+
+File handling with with open().
+
+os & shutil (file ops), pathlib.
+
+🔑 9. Memory & Performance
+
+Generators (lazy evaluation).
+
+__slots__ to reduce memory in classes.
+
+Profiling (timeit, cProfile).
+
+🔑 10. Design Patterns in Python
+
+Singleton, Factory, Observer, Strategy, etc.
+
+Dependency Injection.
+
+🔑 11. Testing & Debugging
+
+Unit testing (unittest, pytest).
+
+Debugging (pdb, logging).
+
+🔑 12. Special Topics
+
+Descriptors (used in Django ORM).
+
+Property Decorator (@property).
+
+ContextVars (advanced async state mgmt).
+
+👉 So, to understand any Python codebase, you should focus on:
+
+Decorators & Context Managers (used in frameworks).
+
+Iterators/Generators (for memory-efficient code).
+
+AsyncIO & Multithreading (for web/dev tools).
+
+Typing & Dataclasses (modern Python).
+
+Dunder methods & OOP design (class-heavy code).
+
+--------------------------> now advanced  concepts --------------
+
+iterator in python and generator in pyhon to handle memory efficiently 
+ratheer than loading entire datasets in python it load data one at a time which leads to use our memory efficienlty 
+
+class MyRange:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+        self.current = start
+
+    def __iter__(self):
+        # returns the iterator object (itself)
+        return self
+
+    def __next__(self):
+        if self.current < self.end:
+            num = self.current
+            self.current += 1
+            return num
+        else:
+            # when no more elements, stop iteration
+            raise StopIteration
+
+
+# Using our custom iterator
+for num in MyRange(1, 5):
+    print(num)
+
+Asynchronous Iterator
+Asynchronous iterators in Python allow us to iterate over asynchronous sequences, enabling the handling of async operations within a loop.
+
+They follow the asynchronous iterator protocol which consists of the methods __aiter__() and __anext__() (added in Python 3.10 version onwards.). These methods are used in conjunction with the async for loop to iterate over asynchronous data sources.
+
+import asyncio
+
+class Oddnumbers():
+   def __init__(self):
+      self.start = -1
+
+   def __aiter__(self):
+      return self
+      
+   async def __anext__(self):
+      if self.start >= 9:
+         raise StopAsyncIteration
+      self.start += 2
+      await asyncio.sleep(1)
+      return self.start
+      
+async def main():
+   it = Oddnumbers()
+   while True:
+      try:
+         awaitable = anext(it)
+         result = await awaitable
+         print(result)
+      except StopAsyncIteration:
+         break
+         
+asyncio.run(main())
+
+import asyncio
+
+class AsyncAPI:
+    def __init__(self, urls):
+        self.urls = urls
+        self.index = 0
+
+    def __aiter__(self):
+        return self
+
+    async def __anext__(self):
+        if self.index < len(self.urls):
+            url = self.urls[self.index]
+            self.index += 1
+            await asyncio.sleep(1)  # simulate API response time
+            return f"Fetched data from {url}"
+        else:
+            raise StopAsyncIteration
+
+
+async def main():
+    urls = ["api/1", "api/2", "api/3"]
+    async for data in AsyncAPI(urls):
+        print(data)
+
+asyncio.run(main())
+
+Python Generators
+Generators in Python are a convenient way to create iterators. They allow us to iterate through a sequence of values which means, values are generated on the fly and not stored in memory, which is especially useful for large datasets or infinite sequences.
+✅ Generator
+
+A special kind of iterator, created with yield or generator expression.
+
+Python automatically implements __iter__() and __next__().
+
+Much simpler to write.  def my_gen(n):
+    for i in range(n):
+        yield i
+
+g = my_gen(3)
+print(next(g))  # 0
+print(next(g))  # 1
+
+
+def fibonacci(n):
+   a, b = 0, 1
+   while True:
+      c=a+b
+      if c>=n:
+         break
+      yield c
+      a, b = b, c
+   return
+   
+f = fibonacci(10)
+while True:
+   try:
+      print (next(f))
+   except StopIteration:
+      break 
+Asynchronous Generator
+An asynchronous generator is a co-routine that returns an asynchronous iterator. A co-routine is a Python function defined with async keyword, and it can schedule and await other co-routines and tasks.
+
+Just like a normal generator, the asynchronous generator yields incremental item in the iterator for every call to anext() function, instead of next() function.
+import asyncio
+
+async def async_generator(x):
+   for i in range(1, x+1):
+      await asyncio.sleep(1)
+      yield i
+      
+async def main():
+   async for item in async_generator(5):
+      print(item)
+      
+asyncio.run(main())
+
+------>
+import asyncio
+
+async def fibonacci(n):
+   a, b = 0, 1
+   while True:
+      c=a+b
+      if c>=n:
+         break
+      await asyncio.sleep(1)
+      yield c
+      a, b = b, c
+   return
+   
+async def main():
+   f = fibonacci(10)
+   async for num in f:
+      print (num)
+      
+asyncio.run(main())
+
+------------------------closure and decorator  in python ----------------------------
+What is a Closure?
+A Python closure is a nested function which has access to a variable from an enclosing function that has finished its execution. Such a variable is not bound in the local scope. To use immutable variables (number or string), we have to use the non-local keyword.
+
+In Python, nonlocal keyword allows a variable outside the local scope to be accessed. This is used in a closure to modify an immutable variable present in the scope of outer variable. Here is the example of the closure with the nonlocal keyword.
+
+def functionA():
+   counter =0
+   def functionB():
+      nonlocal counter
+      counter+=1
+      return counter
+   return functionB
+
+myfunction = functionA()
+
+retval = myfunction()
+print ("Counter:", retval)
+
+retval = myfunction()
+print ("Counter:", retval)
+
+retval = myfunction()
+print ("Counter:", retval)
+
+----------------decorator function ------------------------
+def my_function(x):
+   print("The number is=",x)
+
+def my_decorator(some_function,num):
+   def wrapper(num):
+      print("Inside wrapper to check odd/even")
+      if num%2 == 0:
+         ret= "Even"
+      else:
+         ret= "Odd!"
+      some_function(num)
+      return ret
+   print ("wrapper function is called")
+   return wrapper
+
+no=10
+my_function = my_decorator(my_function, no)
+print ("It is ",my_function(no))
+
+def require_login(func):
+    def wrapper(user):
+        if not user.get("is_logged_in"):
+            print("Access Denied")
+            return
+        return func(user)
+    return wrapper
+
+@require_login
+def dashboard(user):
+    print(f"Welcome {user['name']}")
+
+dashboard({"name": "Rahul", "is_logged_in": False})
+dashboard({"name": "Rahul", "is_logged_in": True})
+
+import asyncio
+from functools import wraps
+
+def async_logger(func):
+    @wraps(func)
+    async def wrapper(*args, **kwargs):
+        print("Before async call")
+        result = await func(*args, **kwargs)
+        print("After async call")
+        return result
+    return wrapper
+
+@async_logger
+async def fetch_data():
+    await asyncio.sleep(1)
+    print("Data fetched")
+
+asyncio.run(fetch_data())
+
+def my_decorator(func):
+    def wrapper():
+        print("Before")
+        func()
+        print("After")
+    return wrapper
+
+def hello():
+    print("Hello Rahul!")
+
+# Manually decorate
+hello = my_decorator(hello)
+
+hello()
+
+def my_decorator(func):
+    def wrapper():
+        print("Before")
+        func()
+        print("After")
+    return wrapper
+
+@my_decorator   # This is SAME as hello = my_decorator(hello)
+def hello():
+    print("Hello Rahul!")
+
+hello()
+
+# Without @
+func = deco3(deco2(deco1(func)))
+
+# With @
+@deco1
+@deco2
+@deco3
+def func():
+    ...
+
+
+

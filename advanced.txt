@@ -1,0 +1,17 @@
+✅ 2. Advanced Python
+These are used heavily in large projects:
+
+Decorators
+
+Generators & Iterators
+
+Context managers (with statement)
+
+List/dict comprehensions
+
+Lambda, map, filter, reduce
+
+Type hinting (def func(x: int) -> str:)
+
+Modules & Packages
+
