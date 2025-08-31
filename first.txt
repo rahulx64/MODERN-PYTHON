@@ -1395,3 +1395,27 @@ Garbage Collection: In addition to reference counting the Python employs a garba
 Context managers in Python provide a powerful way to manage resources efficiently and safely. A context manager in Python is an object that defines a runtime context for use with the with statement. It ensures that setup and cleanup operations are performed automatically.
 
 For instance, when working with file operations, context managers handle the opening and closing of files, ensuring that resources are managed correctly.
+----------coroutines ---------------
+Execution of Coroutines
+Coroutines are initiated with the __next__() method which starts the coroutine and advances execution to the first yield statement. The coroutine then waits for a value to be sent to it. The send() method is used to send values to the coroutine which can then process these values and potentially yield results.
+Example of Basic Coroutine
+A coroutine uses the yield statement which can both send and receive values. Unlike a generator which yields values for iteration where as a coroutine typically uses yield to receive input and perform actions based on that input. Following is the basic example of the Python coroutine −
+Closing a Coroutine
+Coroutines can run indefinitely so it's important to close them properly when they are no longer needed. The close() method terminates the coroutine and handles cleanup. If we attempt to send data to a closed coroutine it will raise a StopIteration exception.
+
+for asynxchronus task not cpu heavy process but other like fetching network request
+import asyncio
+
+async def task(name):
+    print(f"Starting {name}")
+    await asyncio.sleep(2)   # Non-blocking wait
+    print(f"Finished {name}")
+
+async def main():
+    await asyncio.gather(
+        task("Download A"),
+        task("Download B"),
+        task("Download C")
+    )
+
+asyncio.run(main())
