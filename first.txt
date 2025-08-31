@@ -1230,6 +1230,168 @@ func = deco3(deco2(deco1(func)))
 @deco3
 def func():
     ...
+--------------------------------------------------------------------
+🔹 What is a Weak Reference?
 
+A weak reference in Python is a reference to an object that does not increase its reference count.
+This means the object can still be garbage collected even if a weak reference to it exists.
 
+Normally, if you assign an object to a variable, Python increases its reference count and keeps it alive. But with weak references, Python can delete the object when nothing else strongly references it.
 
+🔹 Purpose of Weak References
+
+To avoid memory leaks when objects reference each other in complex structures (like caches, graphs, trees).
+
+To allow objects to be garbage collected when they are no longer needed, even if a "pointer" to them exists.
+
+Often used in caching:
+
+Keep data only if it's being used.
+
+If memory is needed, Python can automatically free it.
+---------------------------------------------------------------------------------
+Serialization in Python
+Serialization refers to the process of converting an object into a format that can be easily stored, transmitted, or reconstructed later. In Python, this involves converting complex data structures, such as objects or dictionaries, into a byte stream.
+Serialization Libraries in Python
+Python offers several libraries for serialization, each with its own advantages. Here is a detailed overview of some commonly used serialization libraries in Python −
+
+Pickle − This is Python's built-in module for serializing and deserializing Python objects. It is simple to use but specific to Python and may have security implications if used with untrusted data.
+
+JSON − JSON (JavaScript Object Notation) is a lightweight data interchange format that is human-readable and easy to parse. It is ideal for web APIs and cross-platform communication.
+
+YAML − YAML: YAML (YAML Ain't Markup Language) is a human-readable data serialization standard that is also easy for both humans and machines to read and write. It supports complex data structures and is often used in configuration files.
+
+-----------------------------------------------------------------------------
+for templating use jinja 2 libaray which is very powerful and great 
+
+---------------------------------------abstract class is one of the most important part of the python here is implementation ------------------
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+   @abstractmethod
+   def area(self):
+      pass
+
+   @abstractmethod
+   def perimeter(self):
+      pass
+
+   def description(self):
+      return "I am a shape."
+
+class Rectangle(Shape):
+   def __init__(self, width, height):
+      self.width = width
+      self.height = height
+
+   def area(self):
+      return self.width * self.height
+
+   def perimeter(self):
+      return 2 * (self.width + self.height)
+
+class Circle(Shape):
+   def __init__(self, radius):
+      self.radius = radius
+
+   def area(self):
+      import math
+      return math.pi * self.radius ** 2
+
+   def perimeter(self):
+      import math
+      return 2 * math.pi * self.radius
+
+def print_shape_info(shape):
+   print(shape.description())
+   print(f"Area: {shape.area()}")
+   print(f"Perimeter: {shape.perimeter()}")
+
+shapes = [Rectangle(5, 10), Circle(7)]
+
+for shape in shapes:
+   print_shape_info(shape)
+   print("-" * 20)
+
+class IncompleteShape(Shape):
+   pass
+
+try:
+   incomplete_shape = IncompleteShape()
+except TypeError as e:
+   print(e)  
+------------------------------------------------custom exception in python --------------------------------
+
+class CustomError(Exception):
+   def __init__(self, message):
+      super().__init__(message)
+      self.message = message
+
+def process_data(data):
+   if not data:
+      raise CustomError("Empty data provided")
+   # Processing logic here
+
+try:
+   process_data([])
+except CustomError as e:
+   print(f"Custom Error occurred: {e.message}")
+   # Additional error handling logic
+   -------------------------------higher order fuction -------------------------------
+   What is a Higher-Order Function?
+A higher-order function is a function that either, takes one or more functions as arguments or returns a function as its result. Below you can observe the some of the properties of the higher-order function in Python 
+ function can be stored in a variable.
+A function can be passed as a parameter to another function.
+A high order functions can be stored in the form of lists, hash tables, etc.
+Function can be returned from a function.
+
+--Creating Higher Order Function with Nested Scopes
+----------------------------------------------------------------------------------------------
+
+--Creating Higher-Order Functions with Callable Objects
+--class Multiplier:
+   def __init__(self, factor):
+      self.factor = factor
+
+   def __call__(self, x):
+      return self.factor * x
+ 
+# Create an instance of the Multiplier class
+multiply_second_number = Multiplier(2) 
+
+# Call the  Multiplier object to computes factor * x
+Result = multiply_second_number(100)  
+
+# Printing result  
+print("Multiplication of Two numbers is: ", Result) 
+--------------------------------------Higher-order functions with the 'functools' Module
+The functools module provides higher-order functions that act on or return other functions. Any callable object can be treated as a function for the purposes of this module.
+import functools
+
+def my_decorator(f):
+   @functools.wraps(f)
+   def wrapper(*args, **kwargs):
+      print("Calling", f.__name__)
+      return f(*args, **kwargs)
+   return wrapper
+
+@my_decorator
+def invite(name):
+   print(f"Welcome to, {name}!")
+
+invite("Tutorialspoint")
+
+------------
+reduce function is also higher order function  using func tools
+-------------------->
+Python - Object Internals
+Memory Management
+Memory management in Python is a critical aspect of the language's design by ensuring efficient use of resources while handling object lifetimes and garbage collection. Here are the key components of memory management in Python −
+
+Reference Counting: Python uses reference counting to manage memory. Each object keeps track of how many references point to it. When this count drops to zero then the memory can be freed.
+Garbage Collection: In addition to reference counting the Python employs a garbage collector to identify and clean up reference cycles.
+
+----------------------->context manager in python -----------------
+Context managers in Python provide a powerful way to manage resources efficiently and safely. A context manager in Python is an object that defines a runtime context for use with the with statement. It ensures that setup and cleanup operations are performed automatically.
+
+For instance, when working with file operations, context managers handle the opening and closing of files, ensuring that resources are managed correctly.
