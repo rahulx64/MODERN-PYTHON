@@ -1415,7 +1415,22 @@ async def main():
     await asyncio.gather(
         task("Download A"),
         task("Download B"),
+
+        
         task("Download C")
     )
 
 asyncio.run(main())
+--------------------------comtext manager -----------------------------------------
+Python Context Manager Types
+Python supports both synchronous and asynchronous context managers. Each type has specific methods that need to be implemented to manage the life cycle of the context.
+
+Synchronous Context Managers
+A synchronous context managers are implemented using the __enter__() and __exit__() methods.
+
+1. The __enter__() Method
+The __enter__(self) method is called when execution enters the context of the with statement. This method should return the resource to be used within the with block.
+
+Example
+
+Here is a simple example of creating our own context manager using the __enter__() and __exit__() methods.
